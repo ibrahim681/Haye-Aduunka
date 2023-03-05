@@ -1,0 +1,90 @@
+<html><head>
+<meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Lab04</title>
+<link href="lab04.css" rel="stylesheet" type="text/css">
+<h1>COMPLETE THE FOLLOWING FORM<h1>
+<body>
+<style>
+div {margin-top:10px;}
+</style>
+<form name="myform" action="#">
+    <input type='text' id ='nameField' placeholder= 'Name'/>
+    <input type='text' id = 'phoneField' placeholder= 'PhoneNumber'/>
+    <input type='text' id= 'addressField' placeholder= 'Address'> 
+    <button type= "button" id = 'button' onclick="username(); phonenumber();transformphone()">Submit</button><br>
+    <p id = "username"></p>
+    <p id = "phonenumber"></p>
+    <p id = "transform"></p>
+</form>
+<textarea id="textbox" rows="4" cols="50" oninput="countChars();countAlpha();"></textarea>
+<p id= "textCount"></p>
+<p id= "charCount"></p>
+
+<script>
+    function username(){
+        y = document.getElementById("nameField").value;
+        var letters = /^[A-Za-z]+$/;
+        let x = false;
+        let mesg = "Username must be alphabetic characters.";
+        if (y.match(letters))
+        {
+            x=true;
+            mesg = ("Username: " + y); 
+        }
+    document.getElementById("username").innerHTML=mesg;
+    return false;     
+    }
+    var letters = /^[A-Za-z]{3}[ ][A-Za-z]{3}$/;
+
+    function phonenumber(){
+        y = document.getElementById("phoneField").value;
+        var phoneno = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
+        let x = false;
+        let mesg = "Phone number must be in the form (XXX-XXX-XXXX).";
+        if (y.match(phoneno))
+        {
+            x=true;
+            mesg = ("Phone Number: " + y); 2
+        }
+    document.getElementById("phonenumber").innerHTML=mesg;
+    return false;     
+    }
+
+    function transformphone() {
+        y = document.getElementById("phoneField").value;
+        var phoneno = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
+        let mesg = "Error: Cannot Transform, please enter a valid number. "
+        if (y.match(phoneno))
+        {
+            x=true;
+            mesg = ("Transformed Number: " + "(" + y.slice(0, 3) + ")" + " " + y.slice(4, 12)); 
+        }
+        document.getElementById("transform").innerHTML=mesg;
+        return false;
+
+    }
+    function countChars(textbox) {
+        var count1 = document.getElementById("textbox").value.length;
+        let mesg = "Count: " + count1;
+        document.getElementById("textCount").innerHTML = mesg; 
+    }
+      
+    function countAlpha(textbox) {
+        var mystr = document.getElementById("textbox").value;
+        var strlength = mystr.length
+        var count = 0;
+        var letters = /^[A-Za-z]/;
+        for (let i = 0; i < strlength+1; i++) {
+            if (mystr[i].match(letters)) {
+                i++;
+                count++; 
+            }
+        }
+        let mesg = "Letter Count: " + count;   
+        document.getElementById("charCount").innerHTML = mesg; 
+}
+
+</script>
+</body>
+</html>
