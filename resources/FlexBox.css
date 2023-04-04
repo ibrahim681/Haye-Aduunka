@@ -1,0 +1,22 @@
+html, body {
+ 
+    font-family: sans-serif;
+    font-size: 30px;
+    text-align: center;
+    background-attachment: fixed;
+    background-color: wheat;
+ 
+}
+
+.flex-container {
+    display: flex;
+    height: 300px; /* Or whatever */
+}
+
+.flex-item {
+    width: 100px;  /* Or whatever */
+    height: 100px; /* Or whatever */
+    margin: auto;  /* Magic! */
+    border: 0.5rem solid saddlebrown; 
+    background-color: white;
+}
