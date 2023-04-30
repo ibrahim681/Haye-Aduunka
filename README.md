@@ -48,4 +48,5 @@ git push
 ## Resource List 
 <ul>
 <li> IDE https://replit.com/~ </li>
+<li> IDE https://vscode.dev</li>
 </ul>
