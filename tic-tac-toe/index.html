@@ -9,10 +9,6 @@
     <title>Tic-Tac-Toe Game</title>
 </head>
 
-<script>
-
-</script>
-
 <body>
     <div class="container">
         <h1>Tic-Tac-Toe</h1>
@@ -30,5 +26,84 @@
         <button class="button">Reset</button>
     </div>
 </body>
+
+<script>
+    const cells = document.querySelectorAll('.cell');
+    const button = document.querySelector('.button');
+    let currentPlayer = 'X';
+    let gameActive = true;
+
+    // Add click event listener to each cell
+    cells.forEach(cell => {
+        cell.addEventListener('click', handleCellClick);
+    });
+
+    // Reset the game when the Reset button is clicked
+    button.addEventListener('click', resetGame);
+
+    // Function to handle cell click event
+    function handleCellClick(event) {
+        const cell = event.target;
+        const currentClass = currentPlayer === 'X' ? 'x' : 'o';
+
+        // If the cell is already marked or the game is over, ignore the click
+        if (!cell.classList.contains('x') && !cell.classList.contains('o') && gameActive) {
+            cell.classList.add(currentClass);
+            cell.textContent = currentPlayer;
+            if (checkWin()) {
+                endGame(false);
+            } else if (isDraw()) {
+                endGame(true);
+            } else {
+                switchPlayer();
+            }
+        }
+    }
+
+    // Function to switch the current player
+    function switchPlayer() {
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    }
+
+    // Function to check if there is a win
+    function checkWin() {
+        const winningCombinations = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+            [0, 4, 8], [2, 4, 6] // Diagonals
+        ];
+
+        return winningCombinations.some(combination => {
+            return combination.every(index => {
+                return cells[index].classList.contains(currentPlayer === 'X' ? 'x' : 'o');
+            });
+        });
+    }
+
+    // Function to check if it's a draw
+    function isDraw() {
+        return [...cells].every(cell => {
+            return cell.classList.contains('x') || cell.classList.contains('o');
+        });
+    }
+
+    // Function to end the game
+    function endGame(draw) {
+        gameActive = false;
+        const message = draw ? "It's a draw!" : `${currentPlayer} wins!`;
+        alert(message);
+    }
+
+    // Function to reset the game
+    function resetGame() {
+        cells.forEach(cell => {
+            cell.classList.remove('x', 'o');
+            cell.textContent = '';
+        });
+
+        currentPlayer = 'X';
+        gameActive = true;
+    }
+</script>
 
 </html>
