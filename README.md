@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://rahuldkjain.github.io/gh-profile-readme-generator">
-    <img alt="Say Somali Logo" src="./images/logo.png" width="100" />
+    <img alt="Say Somali Logo" src="./public/images/logo.png" width="100" />
   </a>
 </p>
 <h1 align="center">
