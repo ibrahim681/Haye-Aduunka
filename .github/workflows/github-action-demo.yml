@@ -21,14 +21,3 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-  Build-Jenkins:
-    runs-on: ubuntu-latest
-    steps:
-      - name: trigger single Job
-        uses: appleboy/jenkins-action@master
-        with:
-          url: "https://jenkins.offlinequran.com"
-          user: "qj-admin"
-          token: ${{secrets.REMOTE_TRIGGER}}
-          job: "test-project"
-  
